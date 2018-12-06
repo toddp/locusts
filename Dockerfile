@@ -13,6 +13,7 @@ RUN apt-get -y install \
         locustio==0.8
 
 COPY ./run.py /run.py
+ADD  scripts /scripts
 
 EXPOSE 8089
 EXPOSE 5557
