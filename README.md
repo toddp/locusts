@@ -47,15 +47,19 @@ can see an example in this repository of how that would look:
 within the locusts dir:
 
 build the image:
+
 `docker build .`
 
 try running the image, passing whatever parameters you need to locust:
+
 `docker run <image id > --master-host=<ip> --master-bind-port=<port> --host=http://www.example.com`
 
 when ready to push image to hub:
 
 tag with the name of the hub repo you want to use:
+
 `docker tag <image id> pinkatron/locust:latest`
 
 push image to that repo:
+
 `docker push pinkatron/locust`
