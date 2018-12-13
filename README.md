@@ -50,7 +50,7 @@ build the image:
 `docker build .`
 
 try running the image, passing whatever parameters you need to locust:
-`docker run <image id > --master-host=<ip> --master-bind-port=<port>`
+`docker run <image id > --master-host=<ip> --master-bind-port=<port> --host=http://www.example.com`
 
 when ready to push image to hub:
 
