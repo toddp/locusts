@@ -127,4 +127,6 @@ crashlytics.properties
 crashlytics-build.properties
 fabric.properties
 
-/scripts
+# Was ignored in original repo, but we want to add this dir
+# So comment out ignore stmt
+# /scripts

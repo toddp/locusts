@@ -21,8 +21,22 @@ def parse(args: list = None) -> dict:
         help='The hostname/ip of the master instance'
     )
 
+    parser.add_argument(
+        '--master-bind-port',
+        dest='master_bind_port',
+        default=None,
+        help='The hostname/ip of the master instance'
+    )
+    parser.add_argument(
+        '--target',
+        dest='target',
+        default=None,
+        help='The url of the load target'
+    )
+
     configs.update(vars(parser.parse_args(args)))
     configs['is_master'] = (configs['master_host'] is None)
+    configs['is_master_bind_port'] = (configs['master_bind_port'] is None)
     return configs
 
 
@@ -46,7 +60,8 @@ def make_command(args: dict) -> str:
         'locust',
         '-f', '"{}"'.format(get_locust_file()),
         '--master' if args['is_master'] else '--slave',
-        '--host={}'.format(args['target'])
+        '--host={}'.format(args['target']),
+        '--master-bind-port={}'.format(args['master_bind_port']) if args['master_bind_port'] else ''
     ]
 
     if not args.get('is_master'):
@@ -64,7 +79,7 @@ def make_command(args: dict) -> str:
 
 def run():
     args = parse()
-
+    print(args)
     process = subprocess.Popen(
         args=make_command(args),
         stdout=sys.stdout,
